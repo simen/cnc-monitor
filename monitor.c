@@ -25,8 +25,8 @@
 
 #define step_x_mask 1
 #define step_y_mask 2
-#define dir_x_mask 8
-#define dir_y_mask 16
+#define dir_x_mask 16
+#define dir_y_mask 32
 
 
 volatile int32_t x_position, y_position;
@@ -34,8 +34,8 @@ volatile uint16_t x_steps, y_steps;
 
 void monitor_init() {
   // Configuring IO for the stepper monitor
-  // PB0 is step X, PB3 is direction X
-  // PB1 is step Y, PB4 is direction X
+  // PB0 is step X, PB4 is direction X
+  // PB1 is step Y, PB5 is direction X
 
   // Cofigure entire port B as input
   DDRB = 0;
@@ -74,21 +74,21 @@ SIGNAL(SIG_PIN_CHANGE0) {
   }
 }
 
-int32_t current_x_location() {
+int32_t monitor_current_x_location() {
   return(x_position);
 }
 
-int32_t current_y_location() {
+int32_t monitor_current_y_location() {
   return(y_position);
 }
 
-uint16_t read_and_reset_x_step_count() {
+uint16_t monitor_read_and_reset_x_step_count() {
   uint16_t count = x_steps;
   x_steps = 0;
   return(count);
 }
 
-uint16_t read_and_reset_y_step_count() {
+uint16_t monitor_read_and_reset_y_step_count() {
   uint16_t count = y_steps;
   y_steps = 0;
   return(count);

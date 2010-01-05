@@ -50,11 +50,16 @@ void erase_block(char x1, char y1, char x2, char y2) {
 }
 
 void box(char S_R, char x1, char y1, char x2, char y2) {
-  serialWrite(0x7c); serialWrite(0x0f); 
-  serialWrite(x1); serialWrite(y1); serialWrite(x2); serialWrite(y2); serialWrite(S_R);
+  // serialWrite(0x7c); serialWrite(0x0f); 
+  // serialWrite(x1); serialWrite(y1); serialWrite(x2); serialWrite(y2); serialWrite(S_R);
+  line(S_R, x1, y1, x2, y1);
+  line(S_R, x2, y1, x2, y2);
+  line(S_R, x1, y2, x2, y2);
+  line(S_R, x1, y2, x1, y1);
 }
 
-void setTextPosition(char x, char y) {
-  serialWrite(0x7c); serialWrite(0x18); 
-  serialWrite(x); serialWrite(0x19); serialWrite(y);
+void set_text_position(char x, char y) {
+  serialWrite(0x7c); serialWrite(0x18); serialWrite(x); 
+  serialWrite(0x7c); serialWrite(0x19); serialWrite(y);
 }
+

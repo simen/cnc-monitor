@@ -27,13 +27,13 @@
 
 void monitor_init();
 
-int32_t current_x_location();
+int32_t monitor_current_x_location();
 
-int32_t current_y_location();
+int32_t monitor_current_y_location();
 
-uint16_t read_and_reset_x_step_count();
+uint16_t monitor_read_and_reset_x_step_count();
 
-uint16_t read_and_reset_y_step_count();
+uint16_t monitor_read_and_reset_y_step_count();
 
 #endif
 

@@ -28,9 +28,9 @@
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
 
 DEVICE     = atmega168
-CLOCK      = 16000000
+CLOCK      = 20000000
 PROGRAMMER = -c avrisp2 -P usb
-OBJECTS    = main.o wiring_serial.o graphics.o monitor.o
+OBJECTS    = main.o wiring_serial.o graphics.o monitor.o gui.o
 FUSES      = -U hfuse:w:0xd9:m -U lfuse:w:0x24:m
 
 # Tune the lines below only if you know what you are doing:

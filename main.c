@@ -23,26 +23,31 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/sleep.h>
+#include <util/delay.h>
 #include "wiring_serial.h"
 #include "graphics.h"
 #include "monitor.h"
+#include "gui.h"
 
-// PB0 is step X, PB3 is direction X
-// PB1 is step Y, PB4 is direction X
+// PB0 is step X, PB4 is direction X
+// PB1 is step Y, PB5 is direction X
 // The SparkFun 160x120 Huge LCD with serial backpack is connected to serial TX
 
 int main(void)
 {
   beginSerial(115200);  
 
-  clear_screen();
-  circle(1, 80, 60, 20);
+  _delay_ms(1000);
+  gui_init();
+  gui_set_scale(7); // 128 steps/pixel
+  gui_set_tool_point(0,0);
   
   monitor_init();
   sei();
   
   for(;;){
     sleep_mode();
+    gui_set_tool_point(monitor_current_x_location(),monitor_current_y_location());
   }
   return 0;   /* never reached */
 }

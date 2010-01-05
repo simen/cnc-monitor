@@ -22,6 +22,9 @@
 #ifndef graphics_h
 #define graphics_h
 
+#define MAX_X 159
+#define MAX_Y 127
+
 void clear_screen(void);
 
 void print_char(char S_R, char txt);
@@ -33,5 +36,7 @@ void demo(void);
 
 void erase_block(char x1, char y1, char x2, char y2);
 void box(char S_R, char x1, char y1, char x2, char y2);
+void set_text_position(char x, char y);
+void render_text(char x, char y, const char *s);
 
 #endif
